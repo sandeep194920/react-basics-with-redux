@@ -1,0 +1,14 @@
+This notes contain all the important info gathered during the development of this project. I have code out of the box 
+by Max but Redux hasn't applied yet. In this we learn step by step how to apply redux and work with react-redux library.
+
+Tag v1.1 - 
+
+* * Set 1 work flow
+
+1. Steps in general for redux :
+   * The state is the universal state and is called central store. To the store, we pass reducer.
+   * That reducer which we pass to store is called root reducer. We can combine multiple reducers into one, and 
+     that combined one becomes the root reducer which is then passed into the store.
+   * The action is dispatched into the reducer and the logic is written inside reducer which updates the store.
+   * For example, if we want to increment the counter (counter is in store), then we dispatch increment action and 
+     the increment logic is written in the reducer. This updates the store.
