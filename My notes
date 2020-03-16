@@ -31,4 +31,8 @@ Tag v1.1 -
    all the components which likes to get the updates from store and send the data to the store via reducer needs to 
    be wrapped with connect function which returns a hoc.
    We pass two arguments to connect. The first one is mapStateToProps meaning which part of the state is important to us,
-   and which actions do we need to dispatch. 
+   and which actions do we need to dispatch.
+
+4. Now that we have connected store to our Counter component through mapStateToProps, we will now dispatch actions to 
+   modify the value of the counter in the store on the button clicks like increment, decrement and so on. Note that type
+   is important and must be present in dispatch method.
