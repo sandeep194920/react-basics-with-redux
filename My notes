@@ -22,3 +22,13 @@ Tag v1.1 -
    into index.js and pass it to store.
    Note : Reducer is a function that takes state and an action.  
    Let's next connect react to redux.
+
+3. Let's connect redux to react. 
+    * npm install --save react-redux ---> for react to work with redux
+   Provider is imported from react-redux and this is wrapped around <App/> in the index.js. This Provider is used to 
+   connect react to redux. 
+   We then use connect (function that returns a hoc) to connect react component (where we need the data to be passed from/to store). In short, 
+   all the components which likes to get the updates from store and send the data to the store via reducer needs to 
+   be wrapped with connect function which returns a hoc.
+   We pass two arguments to connect. The first one is mapStateToProps meaning which part of the state is important to us,
+   and which actions do we need to dispatch. 

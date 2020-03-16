@@ -7,9 +7,16 @@ import registerServiceWorker from "./registerServiceWorker";
 import { createStore } from "redux";
 // import reducer to pass it to store
 import reducer from "./containers/store/reducer";
+// import Provider from react-redux to connect react to redux
+import { Provider } from "react-redux";
 
 // creating a central store
-store = createStore(reducer);
+const store = createStore(reducer);
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />,
+  </Provider>,
+  document.getElementById("root")
+);
 registerServiceWorker();
