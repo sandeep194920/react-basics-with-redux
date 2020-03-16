@@ -10,6 +10,24 @@ const reducer = (state = initialState, action) => {
       counter: state.counter + 1
     };
   }
+  if (action.type === "DECREMENT") {
+    return {
+      // this return object must be a state (modified or new one)
+      counter: state.counter - 1
+    };
+  }
+  if (action.type === "ADD") {
+    return {
+      // this return object must be a state (modified or new one)
+      counter: state.counter + 5
+    };
+  }
+  if (action.type === "SUBTRACT") {
+    return {
+      // this return object must be a state (modified or new one)
+      counter: state.counter - 5
+    };
+  }
   return state;
 };
 

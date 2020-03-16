@@ -36,3 +36,7 @@ Tag v1.1 -
 4. Now that we have connected store to our Counter component through mapStateToProps, we will now dispatch actions to 
    modify the value of the counter in the store on the button clicks like increment, decrement and so on. Note that type
    is important and must be present in dispatch method.
+
+5. We have dispatched INCREMENT function. Let's now implement dispatch actions for DECREMENT, ADD, and SUBTRACT.
+   After implementing them, we now can remove the local state in Counter component which holds counter (we now get that)
+   from store, and can also remove the logic responsible to modify the counter in Counter.js. 
