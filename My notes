@@ -40,3 +40,6 @@ Tag v1.1 -
 5. We have dispatched INCREMENT function. Let's now implement dispatch actions for DECREMENT, ADD, and SUBTRACT.
    After implementing them, we now can remove the local state in Counter component which holds counter (we now get that)
    from store, and can also remove the logic responsible to modify the counter in Counter.js. 
+
+6. We have hardcoded the number into the ADD and SUBTRACT actions but it would be good if we pass this as an argument.
+   Let's implement this now.

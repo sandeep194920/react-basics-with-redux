@@ -19,13 +19,13 @@ const reducer = (state = initialState, action) => {
   if (action.type === "ADD") {
     return {
       // this return object must be a state (modified or new one)
-      counter: state.counter + 5
+      counter: state.counter + action.value
     };
   }
   if (action.type === "SUBTRACT") {
     return {
       // this return object must be a state (modified or new one)
-      counter: state.counter - 5
+      counter: state.counter - action.value
     };
   }
   return state;
