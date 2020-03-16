@@ -43,3 +43,5 @@ Tag v1.1 -
 
 6. We have hardcoded the number into the ADD and SUBTRACT actions but it would be good if we pass this as an argument.
    Let's implement this now.
+
+7. Let's replace if statements with switch statements in the reducer. This makes code more readable.
