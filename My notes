@@ -45,3 +45,6 @@ Tag v1.1 -
    Let's implement this now.
 
 7. Let's replace if statements with switch statements in the reducer. This makes code more readable.
+
+8. Adding a button to store the result now. When we click this btn, we need the current result (at that particular time) 
+   to be displayed on the unordered list below.
