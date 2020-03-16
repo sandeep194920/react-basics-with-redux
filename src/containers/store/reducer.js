@@ -28,24 +28,11 @@ const reducer = (state = initialState, action) => {
         counter: state.counter - action.value
       };
     case "STORE_RESULT":
-      // First way - res.push manipulates the original value OR add the new value to the existing array
-
-      // const res = [...state.results];
-      // res.push(state.counter);
-
-      // return {
-      //   ...state,
-      //   results: res
-      // };
-
-      // *************************************
-
-      // Second way - results.concat doesn't manipulate the existing array, but creates a new array and then adds our
-      // value at the end (like push).
-
       return {
         ...state,
-        results: state.results.concat(state.counter)
+        results: state.results.concat({ id: new Date(), val: state.counter })
+        // id is added here so that we can use this in Counter.js in li for getting a unique key. This is just a temporary fix.
+        // In real apps we might have more meaningful real IDs.
       };
     default:
       return state;

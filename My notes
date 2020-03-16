@@ -48,3 +48,6 @@ Tag v1.1 -
 
 8. Adding a button to store the result now. When we click this btn, we need the current result (at that particular time) 
    to be displayed on the unordered list below.
+
+9. Implemented Store Result button functionality now. But we get a key error here in the li item in Counter.js. Unique 
+   key should have been Implemented which we will do it now by modifying code a bit in the reducer.
