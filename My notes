@@ -12,3 +12,13 @@ Tag v1.1 -
    * The action is dispatched into the reducer and the logic is written inside reducer which updates the store.
    * For example, if we want to increment the counter (counter is in store), then we dispatch increment action and 
      the increment logic is written in the reducer. This updates the store.
+
+2. Let's now apply redux by installing the packages below:
+    * npm install --save redux ---> for redux alone
+
+   It's better to define the central store in index.js since that is where the application starts.  
+   Here in index.js we define store and pass reducer as an argument as discussed in 1. above. The reducer code is 
+   not stored here since it might grow, hence lets create a store folder and put the code there for reducer. We import 
+   into index.js and pass it to store.
+   Note : Reducer is a function that takes state and an action.  
+   Let's next connect react to redux.
