@@ -1,9 +1,9 @@
 This notes contain all the important info gathered during the development of this project. I have code out of the box 
 by Max but Redux hasn't applied yet. In this we learn step by step how to apply redux and work with react-redux library.
 
-Tag v1.1 - 
+Tag v1.1 - completed redux basics - This doens't contain async functionality
 
-* * Set 1 work flow
+* * Set 1 work flow - Redux basics
 
 1. Steps in general for redux :
    * The state is the universal state and is called central store. To the store, we pass reducer.
@@ -66,3 +66,6 @@ Tag v1.1 -
     It's a good idea to separate this reducer as two, one is for counter related and the other one is for results 
     related. Then we can combine these reducers. So, the reducers can be counter.js and results.js in the store.
     For combining multiple reducers we import combineReducers from redux in index.
+
+* * Set 2 work flow - Redux advanced
+
