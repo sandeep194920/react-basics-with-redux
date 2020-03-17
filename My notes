@@ -51,3 +51,11 @@ Tag v1.1 -
 
 9. Implemented Store Result button functionality now. But we get a key error here in the li item in Counter.js. Unique 
    key should have been Implemented which we will do it now by modifying code a bit in the reducer.
+
+10. Now that we have implemented Store Result button which stores the counter every time we click on this btn, lets now
+    work on deleting the result in the list on clicking on the result.
+
+11. Let's outsource action types. We have INCREMENT, DECREMENT, ADD, SUBTRACT which we are using in two places, one in
+    component where action is dispatched and the other one is in the reducer where this action is used in switch statement.
+    If we make a typo in any one place of these two, this doesnt work so, it's better to have this terms in a separate file 
+    and then can be imported and use it in both these places. Let's add this in store folder in actions.js.
