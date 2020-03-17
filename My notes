@@ -59,3 +59,10 @@ Tag v1.1 -
     component where action is dispatched and the other one is in the reducer where this action is used in switch statement.
     If we make a typo in any one place of these two, this doesnt work so, it's better to have this terms in a separate file 
     and then can be imported and use it in both these places. Let's add this in store folder in actions.js.
+
+12. Let's now combine multiple reducers. State defined in the reducer has two properties counter and results. If you see carefully,
+    the reducer here does two things in switch statements. One is to do counter related tasks like DECREMENT, INCREMENT,
+    add and SUBTRACT. The other thing it does is to store and delete results, STORE_RESULTS and DELETE_RESULTS.
+    It's a good idea to separate this reducer as two, one is for counter related and the other one is for results 
+    related. Then we can combine these reducers. So, the reducers can be counter.js and results.js in the store.
+    For combining multiple reducers we import combineReducers from redux in index.
