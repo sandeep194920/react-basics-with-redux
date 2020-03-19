@@ -95,4 +95,22 @@ Tag v1.1 - Completed redux basics - This doens't contain async functionality
   another function. 
   Don't worry if this all seems confusing. Remember, the react gives us all this built in, but it's good to know how to 
   add this middleware manually. Watch video 314. Adding MiddleWares to get clarity.
-  
+
+  14. We got an overall idea what exactly a middleware is and the use of it. To recall again, mw is a place where 
+      action is dispatched when the next(action) is executed. 
+
+      Middleware
+
+                          we have access to  ------> store, next and action
+
+                Before next(action) --- 1
+                          The action is not yet dispatched and the store.getState() gives the state before action being dispatched
+
+                After next(action) --- 2
+                          The next(action) has been executed and the store.getState() gives the updated state where we can see the effect 
+                          of action.
+
+                In between 1 and 2, before calling next(action), we can call async code or do anything with our action, but once the 
+                action is dispatched (in step 2 after next(action) is called) we can't do anything asynchronously like calling backend 
+                and causing side-effects. So the best place to comunicate with backend is after step 1 and befofe step 2.
+                
