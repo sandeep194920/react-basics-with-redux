@@ -1,7 +1,7 @@
 This notes contain all the important info gathered during the development of this project. I have code out of the box 
 by Max but Redux hasn't applied yet. In this we learn step by step how to apply redux and work with react-redux library.
 
-Tag v1.1 - completed redux basics - This doens't contain async functionality
+Tag v1.1 - Completed redux basics - This doens't contain async functionality
 
 * * Set 1 work flow - Redux basics
 
@@ -69,3 +69,30 @@ Tag v1.1 - completed redux basics - This doens't contain async functionality
 
 * * Set 2 work flow - Redux advanced
 
+13. Middleware - Middleware is added between dispatching an action and reaching the reducer. 
+
+                                  Without Middleware                                                  
+              
+                  COMPONENT --dispatches--> ACTION --reaches--> REDUCER         
+
+
+                                  With Middleware
+
+      COMPONENT --dispatches--> ACTION --reaches--> MIDDLEWARE --reaches-->  REDUCER   
+                                                        |
+                                                        |
+                                                        ^
+                                    Code is modified here (ususally async code is implemented) and then 
+                                    passed to reducer. We can create our own middleware (which I will be showing as well),
+                                    but react does it well for us (I will show this later).
+
+  Middleware is a term used for functions or code that is hooked into a process which gets executed as a part of that process
+  without stopping it. So, we can add middleware and the action will still reach reducer. But we can do something with that 
+  action (in the middleware) before it reaches reducer.
+
+  So, if we are adding a middleware manually in our react project, then where to add it ?
+  In the index.js we add logger and assign it to a function (middleware) which inturn returns another function and that also returns 
+  another function. 
+  Don't worry if this all seems confusing. Remember, the react gives us all this built in, but it's good to know how to 
+  add this middleware manually. Watch video 314. Adding MiddleWares to get clarity.
+  
