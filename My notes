@@ -121,7 +121,7 @@ Tag v1.1 - Completed redux basics - This doens't contain async functionality
     Link to devtools - https://github.com/zalmoxisus/redux-devtools-extension
     Watch the video 315. Using the Redux devtools to implement this.
 
-16. Now that we have added redux devtools and now look at the store before and after dispating different actions like ADD, SUBTRACT and so on,
+16. Now that we have added redux devtools and looked at the store before and after dispatching different actions like ADD, SUBTRACT and so on,
     lets now look at how to add Async code with redux. This is the main part of advanced redux.
 
     Now let's think of storing result on a backend. we have result.js inside store folder which is the reducer which is responsible to 
@@ -171,7 +171,7 @@ Tag v1.1 - Completed redux basics - This doens't contain async functionality
 
   * I've added timeout to this STORE_RESULT, but the fact is, this doesnt work. Because reducer doesn't support async code 
     and doesnt wait for 2 seconds or 2000 milliseconds in the timeout block. It just executes the rest of the code and 
-    out purpose fails. Reducer doesn't support the concept of promise where we can execute something in .then() block.
+    our purpose fails. Reducer doesn't support the concept of promise where we can execute something in .then() block.
     Then how to solve this? Where to add async code?
 
   * The answer is, we can add async code in ACTION CREATORS.
