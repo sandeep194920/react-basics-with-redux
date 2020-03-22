@@ -1,11 +1,16 @@
 import React, { Component } from "react";
-
 import CounterControl from "../../components/CounterControl/CounterControl";
 import CounterOutput from "../../components/CounterOutput/CounterOutput";
 // connect functions that returns hoc helps this component to connect to the store of redux
 import { connect } from "react-redux";
-import { increment } from "../store/actions/actions";
-import * as actionTypes from "../store/actions/actions";
+import {
+  increment,
+  decrement,
+  add,
+  subtract,
+  storeResult,
+  deleteResult
+} from "../store/actions/actions";
 
 class Counter extends Component {
   render() {
@@ -57,14 +62,13 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onIncrementCounter: () => dispatch(increment()),
-    onDecrementCounter: () => dispatch({ type: actionTypes.DECREMENT }),
-    onAddCounter: (value) => dispatch({ type: actionTypes.ADD, value: value }),
-    onSubtractCounter: (value) =>
-      dispatch({ type: actionTypes.SUBTRACT, value: value }),
-    onStoreResult: (result) =>
-      dispatch({ type: actionTypes.STORE_RESULT, result: result }),
-    onDeleteResult: (value) =>
-      dispatch({ type: actionTypes.DELETE_RESULT, value: value })
+    onDecrementCounter: () => dispatch(decrement()),
+    onAddCounter: (value) => dispatch(add(value)),
+    onSubtractCounter: (value) => dispatch(subtract(value)),
+    // onStoreResult: (result) =>
+    // dispatch({ type: actionTypes.STORE_RESULT, result: result }),
+    onStoreResult: (result) => dispatch(storeResult(result)),
+    onDeleteResult: (value) => dispatch(deleteResult(value))
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);

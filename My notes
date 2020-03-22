@@ -241,5 +241,6 @@ WE CHANGE THIS TO
           }
   This is the new way to dispatch action for sync code. 
 ----------------------------
-  
+
+  18. Creating new type of action creators for the rest of the actions starting from DECREMENT.  
 
