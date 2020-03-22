@@ -96,7 +96,7 @@ Tag v1.1 - Completed redux basics - This doens't contain async functionality
   Don't worry if this all seems confusing. Remember, the react gives us all this built in, but it's good to know how to 
   add this middleware manually. Watch video 314. Adding MiddleWares to get clarity.
 
-  14. We got an overall idea what exactly a middleware is and the use of it. To recall again, mw is a place where 
+14. We got an overall idea what exactly a middleware is and the use of it. To recall again, mw is a place where 
       action is dispatched when the next(action) is executed. 
 
       Middleware
@@ -114,3 +114,9 @@ Tag v1.1 - Completed redux basics - This doens't contain async functionality
                 action is dispatched (in step 2 after next(action) is called) we can't do anything asynchronously like calling backend 
                 and causing side-effects. So the best place to comunicate with backend is after step 1 and befofe step 2.
                 
+15. Now that we have an idea about middleware, we would like to see the changes of the state in step 1 and step 2 (above) for any actions dispatched.
+    This can be done by console logs which I had done in previous (2 commits before this) commit 16. There I had shown console.log before step 2 and 
+    after step 2. But it would be hard to rely on console.log everytime and its unnecessary overhead. Redux Devtools can make our life easy
+    to view the state before and after dispatching actions.
+    Link to devtools - https://github.com/zalmoxisus/redux-devtools-extension
+    Watch the video 315. Using the Redux devtools to implement this.

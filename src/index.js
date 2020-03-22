@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
 // importing createStore to have a central store, combine reducers combines two reducers here, applyMiddleware is used to introduce middleware
-import { createStore, combineReducers, applyMiddleware } from "redux";
+import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 // import reducers, combine them and then pass it to store
 import counterReducer from "./containers/store/reducers/counter";
 import resultReducer from "./containers/store/reducers/result";
@@ -46,8 +46,13 @@ const logger = (store) => {
   };
 };
 
+// For redux devtools (devtools is used to see the state before and after an action is dispatched)
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 // creating a central store
-const store = createStore(rootReducers, applyMiddleware(logger)); // FYI :applyMW can take multiple middlewares like logger, and they will be executed one after the other.
+const store = createStore(
+  rootReducers,
+  composeEnhancers(applyMiddleware(logger))
+); // FYI :applyMW can take multiple middlewares like logger, and they will be executed one after the other.
 
 ReactDOM.render(
   <Provider store={store}>
