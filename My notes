@@ -175,3 +175,71 @@ Tag v1.1 - Completed redux basics - This doens't contain async functionality
     Then how to solve this? Where to add async code?
 
   * The answer is, we can add async code in ACTION CREATORS.
+
+17. What is an action creator? We have actions.js file which defines differnt type of actions for ADD, SUBTRACT etc like
+
+    export const INCREMENT = "INCREMENT";
+    export const ADD = "ADD";
+    export const SUBTRACT = "SUBTRACT";
+    export const STORE_RESULT = "STORE_RESULT";
+
+    These are action creators (code responsible to create an action). Actually, these are not directly dispatched but 
+    the one which is currently dispatched is in the counter component like so,
+
+    const mapDispatchToProps = (dispatch) => {
+        return {
+          onIncrementCounter: () => dispatch({ type: actionTypes.INCREMENT }),
+          onDecrementCounter: () => dispatch({ type: actionTypes.DECREMENT }),
+          onAddCounter: (value) => dispatch({ type: actionTypes.ADD, value: value })
+          ...
+        }
+    }
+
+    For introducing async code with redux, we are going to change this and write bit differently. But let's see 
+    how to change the existing action creator for synchronous code. Let's do this for increment.
+
+    // Code already existing
+
+----------------------------
+    --> Existing action creator - action.js
+
+      export const INCREMENT = "INCREMENT";
+
+    --> Existing action dispatching - Counter.js
+
+      const mapDispatchToProps = (dispatch) => {
+        return {
+          onIncrementCounter: () => dispatch({ type: actionTypes.INCREMENT })
+          ...
+        }
+      }
+----------------------------
+
+WE CHANGE THIS TO 
+
+    // New type of writing action creator for increment
+
+    --> New type of writing action creator - action.js
+
+            export const INCREMENT = "INCREMENT";
+
+        1.    export const increment = () => { // any payload goes in the brackets if any exisits
+                return {
+                  type: INCREMENT
+                }
+              }
+
+    --> New type of action dispatching - Counter.js
+
+          import {increment} from '../actions'; --> path of actions.js (Will now be moved inside store/actions folder)
+
+          const mapDispatchToProps = (dispatch) => {
+              return {
+                onIncrementCounter: () => dispatch(increment()) ---> increment is the function name used in line 1 above, not that we are executing increment() here which gives us action object like before
+                ...
+              }
+          }
+  This is the new way to dispatch action for sync code. 
+----------------------------
+  
+

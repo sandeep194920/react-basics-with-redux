@@ -4,7 +4,8 @@ import CounterControl from "../../components/CounterControl/CounterControl";
 import CounterOutput from "../../components/CounterOutput/CounterOutput";
 // connect functions that returns hoc helps this component to connect to the store of redux
 import { connect } from "react-redux";
-import * as actionTypes from "../store/actions";
+import { increment } from "../store/actions/actions";
+import * as actionTypes from "../store/actions/actions";
 
 class Counter extends Component {
   render() {
@@ -55,7 +56,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onIncrementCounter: () => dispatch({ type: actionTypes.INCREMENT }),
+    onIncrementCounter: () => dispatch(increment()),
     onDecrementCounter: () => dispatch({ type: actionTypes.DECREMENT }),
     onAddCounter: (value) => dispatch({ type: actionTypes.ADD, value: value }),
     onSubtractCounter: (value) =>
