@@ -12,6 +12,9 @@ import resultReducer from "./containers/store/reducers/result";
 // import Provider from react-redux to connect react to redux
 import { Provider } from "react-redux";
 
+// Adding redux middleware, redux-thunk
+import thunk from "redux-thunk";
+
 // combining reducers
 const rootReducers = combineReducers({
   ctr: counterReducer,
@@ -51,8 +54,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 // creating a central store
 const store = createStore(
   rootReducers,
-  composeEnhancers(applyMiddleware(logger))
-); // FYI :applyMW can take multiple middlewares like logger, and they will be executed one after the other.
+  composeEnhancers(applyMiddleware(thunk))
+); // FYI :applyMW can take multiple middlewares like logger(manually defined middleware) Or thunk(redux middleware), and they will be executed one after the other.
 
 ReactDOM.render(
   <Provider store={store}>

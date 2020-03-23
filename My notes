@@ -243,4 +243,77 @@ WE CHANGE THIS TO
 ----------------------------
 
   18. Creating new type of action creators for the rest of the actions starting from DECREMENT.  
+  19. Let's now focus on async action creators. We will do this with a redux middleware called redux-thunk. 
+      What does redux-thunk do? How is it different from sync action creator?
+
+      Sync action creator example : 
+      Here we see, the function returns object 
+    ----------------------------
+      export const increment = () => {
+          return {
+            type: INCREMENT
+          };
+      };
+    ----------------------------
+      Async action creator 
+      Here, the function doesn't directly return an object but returns another function that when executed returns an object. This 
+      is done by redux-thunk middleware.
+      With this little trick of not returning action itself but returning a function which when executed dispatches 
+      action is done by redux-thunk to run async code.
+
+      For this - npm install --save redux-thunk
+      Link - https://github.com/reduxjs/redux-thunk
+
+      With this added, now let's go to action creators (actions.js) and add timout to STORE_RESULT (to replicate backend async functionality). 
+
+----------------------------
+
+      * Dispatching action doenst change in the container (Counter here). It stays the same.
+
+        import {increment} from '../actions'; --> path of actions.js (Will now be moved inside store/actions folder)
+
+        const mapDispatchToProps = (dispatch) => {
+            return {
+  0 ----------   onIncrementCounter: () => dispatch(storeResult(result)) ---> This dispatch reaches Counter.js and hits storeResult(res) function. 
+              ...
+            }
+        }                      
+
+      * This action dispatch reaches the Counter.js. There, this is what happens to async actions
+
+   2  ------ export const saveResult = (value) => {
+                return {
+                  type: STORE_RESULT,
+                  result: value
+                };
+            };
+
+    1 ------ export const storeResult = (res) => {
+    4 ------    return (dispatch) => {
+                  setTimeout(() => {
+                    console.log("CALLED");
+                    dispatch(saveResult(res)); -----------5
+                  }, 2000);
+                };
+            };
+
+----------------------------
+Explanation : Line 0 is where the storeResult(res) function is dispatched, and that reaches line 1 in Counter.js. Now, 
+              the storeResult() in line 1 is an async function which returns another function inside it (Line number 4). 
+              This internal function is the middleware thunk given by redux. This thunk takes the argument dispatch. 
+              Here if you see, the action is not yet dispatched into reducer. The action is with storeResult still, line 1.
+              The action gets dispatched into the reducer only when line 5 - dispatch(saveResult(res))- inside internal 
+              function 4 is called. But the action being present and held with storeResult function line 1, the internal
+              function gets executed first ( I mean the timeout functionality) and then the dispatch(saveResult()) line 5. 
+              Hence, we see it that the 2000 milliseconds delay occurs and gives an effect of async action here.
+
+To summarize:
+
+ * We dispatch action in Counter.js by calling ----- onIncrementCounter: () => dispatch(storeResult(result)) ---Line 0
+ * It reaches Line 1 storeResult(res) but not yet dispatched to reducer. Note, the actual action that must be sent to reducer is 
+   the Line 2 saveResult().
+ * Line 1 returns internal function which is takes dispatch as an argument (given by thunk), which when called (called here at line 5),
+   sends the action to reducer.
+ * Before calling line 5 (before sending action to reducer), the delay of 2000 ms is introduced and then dispatch(saveResult()), line 5,
+   is called which then dispatches the action to the reducer. 
 
