@@ -374,3 +374,35 @@ To summarize:
     Max recommends to add it in reducer and keep the action creator cleaner. He also suggests we can add code like 
     this even in action creator if required but he says its better to follow one approach and be consistent. His 
     choice is to add it in reducer.
+
+  22. Can we get access to store in the action creator? The answer is yes. But should not over use it. Watch video 
+      322. Using Action Creators and Get State.
+  
+  23. OPTIONAL- Cleaning of reducer a bit more. This is not required but you can use it if your reducer switch statements 
+      need to be a bit more leaner than it is now. Let me show you how.
+
+      Taking small part of counter reducer 
+
+      case actionTypes.INCREMENT:-------1
+      return {
+        ...state,
+        counter: state.counter + 1
+      };
+
+      You can see, all the cases of counter and result reducers looks similar. It returns an object with distributed 
+      state and some value updated below that distributed state. So this can be put in to utilities.js file within store folder.
+
+      So, utilities.js looks like
+
+      export const updateObject = (oldObject,updatedValues) => {
+        return{
+            ...oldObject,
+            ...updatedValues
+        }
+      }
+      Now, the case statement in line 1 can be written as
+
+      case actionTypes.INCREMENT:
+      return {updateObject(state,{counter: state.counter + 1})};
+
+      Let's do this for all the cases in both the reducers
