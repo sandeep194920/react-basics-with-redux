@@ -317,3 +317,30 @@ To summarize:
  * Before calling line 5 (before sending action to reducer), the delay of 2000 ms is introduced and then dispatch(saveResult()), line 5,
    is called which then dispatches the action to the reducer. 
 
+  20. We had splitup our reducers into 2 - one for counter and other for result. Similarly we do it for actions. Now we
+      have all the actions in one file in actions.js. Let's split this into two. Also, lets refactor the code a bit.
+      Here we have actions.js which contains all the export statements for actions and also export functions for sync 
+      and async code.
+
+      Example : 
+                // We have export constant statements like below-----------> These kind of statements has been put into actionTypes.js
+                  export const INCREMENT = "INCREMENT";
+
+                // We have sync action dispatcher function like below--------> These kind of counter related dispatchers put into counter.js
+                export const increment = () => {
+                  return {
+                    type: actionTypes.INCREMENT
+                  };
+                };
+
+                // We have async action dispatcher function like below--------> These kind of result related dispatchers put into result.js
+                export const storeResult = (res) => {
+                  return (dispatch) => {
+                    setTimeout(() => {
+                      console.log("CALLED");
+                      dispatch(saveResult(res));
+                    }, 2000);
+                  };
+                };
+
+
