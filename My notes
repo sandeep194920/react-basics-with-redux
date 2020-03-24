@@ -343,4 +343,34 @@ To summarize:
                   };
                 };
 
+  21. Now that we know what are action creators (redux-thunk that creates an async action and dispatches it), we have one 
+      question - where do we put the logic(if any) - in the action creators ? or reducers ? 
 
+      I mean, take a look below:
+
+      Action dispatcher for add operation
+
+          export const add = (val) => {
+            // const newVal = val + 20 ----------------->1
+            return {
+              type: actionTypes.INCREMENT,
+              val : newVal -------------->2
+            };
+          };
+
+      Reducer for add operation
+
+        switch (action.type) {
+          case actionTypes.ADD:
+            // const newVal = actions.val (action.val gives val in line 2) ------------------>3
+            return {
+              ...state,
+              counter: state.counter + newVal
+          };
+          ...
+        };
+    
+    Now we have two possiblities to add logic to get newVal. One is line 1 (in actionCreator) and one in line 3 (in reducer).
+    Max recommends to add it in reducer and keep the action creator cleaner. He also suggests we can add code like 
+    this even in action creator if required but he says its better to follow one approach and be consistent. His 
+    choice is to add it in reducer.
