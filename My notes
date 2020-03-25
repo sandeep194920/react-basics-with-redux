@@ -406,3 +406,15 @@ To summarize:
       return {updateObject(state,{counter: state.counter + 1})};
 
       Let's do this for all the cases in both the reducers
+  
+  24. This is it. We have successfully completed all the redux basics and advanced concepts out there with this small 
+      counter and results tutorials including devtools and best practices. 
+
+  Note : https://redux.js.org/recipes/using-immutablejs-with-redux
+  This is the link to redux tips on updating store immutably with different nesting levels. If you have store object 
+  within an object within an object and so on, this gives best ways to immutably copy it and change the values and then 
+  update the store. This can be applied to normal react state as well I believe.
+
+  With this, we have completed the journey of redux concepts. I'll create another git tag here v2.0 - redux advanced done.
+
+  Good bye!
