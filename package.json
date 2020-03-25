@@ -2,7 +2,7 @@
   "name": "react-complete-guide",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://redux-counter-tutorial.github.io",
+  "homepage": "https://sandeep194920.github.io/react-counter-with-redux/",
   "dependencies": {
     "gh-pages": "^2.2.0",
     "react": "^16.13.0",
