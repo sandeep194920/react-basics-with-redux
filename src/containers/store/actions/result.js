@@ -12,7 +12,7 @@ export const storeResult = (res) => {
     setTimeout(() => {
       console.log("CALLED");
       dispatch(saveResult(res));
-    }, 2000);
+    }, 500);
   };
 };
 
